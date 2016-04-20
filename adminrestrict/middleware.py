@@ -73,7 +73,7 @@ class AdminPagesRestrictMiddleware(object):
 
     def process_request(self, request):
         # Section adjusted to restrict login to ?edit (sing cms-toolbar-login)into DjangoCMS login.
-        if request.path.startswith(reverse('admin:index') or "cms-toolbar-login" in request.build_absolute_uri()) and request.method == 'POST':
+        if request.path.startswith(reverse('admin:index') or "cms-toolbar-login" in request.build_absolute_uri()):
 
             # if there aren't allowed ips defined it will not check anything
             if AllowedIP.objects.count() <= 0:
